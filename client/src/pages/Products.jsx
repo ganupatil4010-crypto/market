@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-const API_URL = 'http://localhost:5000/api/products';
+import api from '../api';
 
 const Products = ({ user, addToCart }) => {
   const [products, setProducts] = useState([]);
@@ -25,7 +23,7 @@ const Products = ({ user, addToCart }) => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get(API_URL);
+      const res = await api.get('/api/products');
       setProducts(res.data);
     } catch (err) {
       console.error('Error fetching products', err);
@@ -61,7 +59,7 @@ const Products = ({ user, addToCart }) => {
     };
 
     try {
-      await axios.post(API_URL, newProduct);
+      await api.post('/api/products', newProduct);
       alert('✅ नया उत्पाद जुड़ गया!');
       setNewProductName('');
       setNewProductPrice('');
@@ -83,7 +81,7 @@ const Products = ({ user, addToCart }) => {
     }
     
     try {
-      await axios.put(`${API_URL}/${id}`, { 
+      await api.put(`/api/products/${id}`, { 
         price: Number(newPrice),
         img: newImg
       });
@@ -97,7 +95,7 @@ const Products = ({ user, addToCart }) => {
   const handleDeleteProduct = async (id) => {
     if (window.confirm('क्या आप सच में इसे हटाना चाहते हैं?')) {
       try {
-        await axios.delete(`${API_URL}/${id}`);
+        await api.delete(`/api/products/${id}`);
         fetchProducts();
       } catch (err) {
         alert('Error deleting product');

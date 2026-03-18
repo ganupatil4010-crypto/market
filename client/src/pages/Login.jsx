@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-
-// Ensure this matches your backend URL structure if different
-const API_URL = 'http://localhost:5000/api/users';
+import api from '../api';
 
 const Login = ({ onLogin }) => {
   const [activeTab, setActiveTab] = useState('user');
@@ -28,7 +25,7 @@ const Login = ({ onLogin }) => {
 
     try {
       // First try to login with just the phone to see if they exist
-      const res = await axios.post(`${API_URL}/login`, { phone, name: 'temp' });
+      const res = await api.post('/api/users/login', { phone, name: 'temp' });
       // If our backend logic says returning user
       if (res.data.msg === 'Returning user') {
         setReturningUserMsg(`🎉 ${res.data.user.name} जी, आपको पहचान लिया!`);
@@ -52,7 +49,7 @@ const Login = ({ onLogin }) => {
     }
 
     try {
-      const res = await axios.post(`${API_URL}/login`, { phone, name });
+      const res = await api.post('/api/users/login', { phone, name });
       alert(`✅ ${res.data.user.name} जी, रजिस्ट्रेशन सफल! आपका स्वागत है।`);
       onLogin({ name: res.data.user.name, phone: res.data.user.phone, role: 'user' });
     } catch (err) {
@@ -68,7 +65,7 @@ const Login = ({ onLogin }) => {
   const handleOwnerSubmit = async () => {
     setOwnerError('');
     try {
-      const res = await axios.post(`${API_URL}/owner-login`, { 
+      const res = await api.post('/api/users/owner-login', { 
         username: ownerUsername, 
         password: ownerPassword 
       });
