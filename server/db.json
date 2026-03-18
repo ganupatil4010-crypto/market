@@ -1,0 +1,599 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "तूर दाल",
+      "category": "दाल",
+      "price": 120,
+      "img": "images/toor daal.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 2,
+      "name": "मसूर दाल",
+      "category": "दाल",
+      "price": 95,
+      "img": "images/masurdaal.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 3,
+      "name": "चना दाल",
+      "category": "दाल",
+      "price": 85,
+      "img": "images/chanadaal.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 4,
+      "name": "उड़द दाल",
+      "category": "दाल",
+      "price": 110,
+      "img": "images/udatdaal.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 115,
+      "name": "मूंग दाल",
+      "category": "दाल",
+      "price": 120,
+      "img": "images/mog.jpg",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 5,
+      "name": "हल्दी पाउडर",
+      "category": "मसाले",
+      "price": 60,
+      "img": "images/haldhii.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 6,
+      "name": "लाल मिर्च पाउडर",
+      "category": "मसाले",
+      "price": 80,
+      "img": "images/mirch.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 7,
+      "name": "धनिया पाउडर",
+      "category": "मसाले",
+      "price": 45,
+      "img": "images/dhan.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 8,
+      "name": "गरम मसाला",
+      "category": "मसाले",
+      "price": 100,
+      "img": "images/garam.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 153,
+      "name": "मटन मसाला",
+      "category": "मसाले",
+      "price": 100,
+      "img": "images/matan.jpg",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 154,
+      "name": "बिरयानी मसाला",
+      "category": "मसाले",
+      "price": 100,
+      "img": "images/biryani.jpg",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 9,
+      "name": "गेहूं आटा",
+      "category": "आटा",
+      "price": 50,
+      "img": "images/gheu.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 10,
+      "name": "बेसन",
+      "category": "आटा",
+      "price": 70,
+      "img": "images/basen.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 12,
+      "name": "बासमती चावल",
+      "category": "आटा",
+      "price": 120,
+      "img": "images/chaval.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 112,
+      "name": "मैदा",
+      "category": "आटा",
+      "price": 80,
+      "img": "images/maida.jpg",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 14,
+      "name": "रिफाइंड तेल",
+      "category": "तेल",
+      "price": 130,
+      "img": "images/col.png",
+      "weight": "1L",
+      "type": "family"
+    },
+    {
+      "id": 15,
+      "name": "नारियल तेल",
+      "category": "तेल",
+      "price": 200,
+      "img": "images/co.jpg",
+      "weight": "1L",
+      "type": "family"
+    },
+    {
+      "id": 16,
+      "name": "मूंगफली तेल",
+      "category": "तेल",
+      "price": 180,
+      "img": "images/pinu.png",
+      "weight": "1L",
+      "type": "family"
+    },
+    {
+      "id": 101,
+      "name": "पोहे",
+      "category": "अन्य",
+      "price": 60,
+      "img": "images/pooo.jpg",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 105,
+      "name": "मैगी",
+      "category": "अन्य",
+      "price": 50,
+      "img": "images/magi.png",
+      "weight": "500g",
+      "type": "family"
+    },
+    {
+      "id": 114,
+      "name": "साबूदाना",
+      "category": "अन्य",
+      "price": 70,
+      "img": "images/shabu.jpg",
+      "weight": "500g",
+      "type": "family"
+    },
+    {
+      "id": 17,
+      "name": "चीनी",
+      "category": "अन्य",
+      "price": 45,
+      "img": "images/sugar.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 18,
+      "name": "नमक",
+      "category": "अन्य",
+      "price": 25,
+      "img": "images/namak.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 19,
+      "name": "चाय पत्ती",
+      "category": "अन्य",
+      "price": 120,
+      "img": "images/chai.png",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 121,
+      "name": "गुड़ (Jaggery)",
+      "category": "अन्य",
+      "price": 50,
+      "img": "images/god.jpg",
+      "weight": "250g",
+      "type": "family"
+    },
+    {
+      "id": 122,
+      "name": "सोयाबीन",
+      "category": "अन्य",
+      "price": 90,
+      "img": "images/soya.jpg",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 123,
+      "name": "रवा (सूजी)",
+      "category": "अन्य",
+      "price": 60,
+      "img": "images/rava.jpg",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 132,
+      "name": "मूँगफली",
+      "category": "अन्य",
+      "price": 120,
+      "img": "images/nut.jpg",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 20,
+      "name": "पार्ले-जी",
+      "category": "बिस्कुट ",
+      "price": 10,
+      "img": "images/parl.png",
+      "weight": "1 पैक",
+      "type": "family"
+    },
+    {
+      "id": 141,
+      "name": "गुड-डे",
+      "category": "बिस्कुट ",
+      "price": 10,
+      "img": "images/bM.jpg",
+      "weight": "1 पैक",
+      "type": "family"
+    },
+    {
+      "id": 142,
+      "name": "क्रैक जैक",
+      "category": "बिस्कुट ",
+      "price": 10,
+      "img": "images/jack.jpg",
+      "weight": "1 पैक",
+      "type": "family"
+    },
+    {
+      "id": 143,
+      "name": "मारी गोल्ड",
+      "category": "बिस्कुट ",
+      "price": 10,
+      "img": "images/mari.jpg",
+      "weight": "1 पैक",
+      "type": "family"
+    },
+    {
+      "id": 144,
+      "name": "मोनाको",
+      "category": "बिस्कुट ",
+      "price": 10,
+      "img": "images/gten.png",
+      "weight": "1 पैक",
+      "type": "family"
+    },
+    {
+      "id": 145,
+      "name": "ज़िम ज़ैम",
+      "category": "बिस्कुट ",
+      "price": 10,
+      "img": "images/zam.jpg",
+      "weight": "1 पैक",
+      "type": "family"
+    },
+    {
+      "id": 146,
+      "name": "बॉर्बन",
+      "category": "बिस्कुट ",
+      "price": 10,
+      "img": "images/or.jpg",
+      "weight": "1 पैक",
+      "type": "family"
+    },
+    {
+      "id": 147,
+      "name": "ओरियो",
+      "category": "बिस्कुट ",
+      "price": 10,
+      "img": "images/or.jpg",
+      "weight": "1 पैक",
+      "type": "family"
+    },
+    {
+      "id": 21,
+      "name": "चाय पत्ती (छोटा पैक)",
+      "category": "बजट",
+      "price": 10,
+      "img": "images/chten.png",
+      "weight": "50gm",
+      "type": "budget"
+    },
+    {
+      "id": 23,
+      "name": "ब्रू कॉफी",
+      "category": "बजट",
+      "price": 5,
+      "img": "images/bru.png",
+      "weight": "10gm",
+      "type": "budget"
+    },
+    {
+      "id": 24,
+      "name": "हल्दी पाउडर",
+      "category": "बजट",
+      "price": 10,
+      "img": "images/hten.png",
+      "weight": "100gm",
+      "type": "budget"
+    },
+    {
+      "id": 25,
+      "name": "लाल मिर्च पाउडर",
+      "category": "बजट",
+      "price": 10,
+      "img": "images/lten.png",
+      "weight": "100gm",
+      "type": "budget"
+    },
+    {
+      "id": 26,
+      "name": "धनिया पाउडर",
+      "category": "बजट",
+      "price": 10,
+      "img": "images/dten.png",
+      "weight": "100gm",
+      "type": "budget"
+    },
+    {
+      "id": 27,
+      "name": "गरम मसाला",
+      "category": "बजट",
+      "price": 10,
+      "img": "images/gten.png",
+      "weight": "50gm",
+      "type": "budget"
+    },
+    {
+      "id": 151,
+      "name": "मटन मसाला",
+      "category": "बजट",
+      "price": 10,
+      "img": "images/mS.jpg",
+      "weight": "50gm",
+      "type": "budget"
+    },
+    {
+      "id": 152,
+      "name": "बिरयानी मसाला",
+      "category": "बजट",
+      "price": 10,
+      "img": "images/biryani.jpg",
+      "weight": "50gm",
+      "type": "budget"
+    },
+    {
+      "id": 36,
+      "name": "नमकीन",
+      "category": "बजट",
+      "price": 5,
+      "img": "images/shev.png",
+      "weight": "50gm",
+      "type": "budget"
+    },
+    {
+      "id": 41,
+      "name": "चॉकलेट",
+      "category": "बजट",
+      "price": 10,
+      "img": "images/late.png",
+      "weight": "1 पीस",
+      "type": "budget"
+    },
+    {
+      "id": 42,
+      "name": "टूथपेस्ट (छोटा)",
+      "category": "बजट",
+      "price": 10,
+      "img": "images/col.png",
+      "weight": "50gm",
+      "type": "budget"
+    },
+    {
+      "id": 43,
+      "name": "साबुन",
+      "category": "बजट",
+      "price": 10,
+      "img": "images/sope.png",
+      "weight": "1 पीस",
+      "type": "budget"
+    },
+    {
+      "id": 44,
+      "name": "शैम्पू (छोटा पाउच)",
+      "category": "बजट",
+      "price": 5,
+      "img": "images/clinic.png",
+      "weight": "1 पाउच",
+      "type": "budget"
+    },
+    {
+      "id": 45,
+      "name": "वाशिंग पाउडर",
+      "category": "बजट",
+      "price": 5,
+      "img": "images/wash.png",
+      "weight": "100gm",
+      "type": "budget"
+    },
+    {
+      "id": 46,
+      "name": "अगरबत्ती",
+      "category": "बजट",
+      "price": 10,
+      "img": "images/agar.png",
+      "weight": "1 छोटा पैक",
+      "type": "budget"
+    },
+    {
+      "id": 111,
+      "name": "टूथब्रश",
+      "category": "बजट",
+      "price": 20,
+      "img": "images/brush.jpg",
+      "weight": "1 पीस",
+      "type": "budget"
+    },
+    {
+      "id": 124,
+      "name": "माचिस बॉक्स",
+      "category": "बजट",
+      "price": 2,
+      "img": "images/mcc.jpg",
+      "weight": "1 पैक",
+      "type": "budget"
+    },
+    {
+      "id": 131,
+      "name": "मच्छर कॉइल",
+      "category": "बजट",
+      "price": 25,
+      "img": "images/machar.jpg",
+      "weight": "1 पैक",
+      "type": "budget"
+    },
+    {
+      "id": 48,
+      "name": "च्युइंग गम",
+      "category": "बजट",
+      "price": 5,
+      "img": "images/gum.png",
+      "weight": "10 पीस",
+      "type": "budget"
+    },
+    {
+      "id": 49,
+      "name": "लॉलीपॉप",
+      "category": "बजट",
+      "price": 5,
+      "img": "images/loli.png",
+      "weight": "5 पीस",
+      "type": "budget"
+    },
+    {
+      "id": 50,
+      "name": "कुरकुरे",
+      "category": "बजट",
+      "price": 5,
+      "img": "images/kurkur.png",
+      "weight": "1 पैक",
+      "type": "budget"
+    },
+    {
+      "id": 134,
+      "name": "बादाम",
+      "category": "सूखे मेवे",
+      "price": 800,
+      "img": "images/badam.jpg",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 135,
+      "name": "काजू",
+      "category": "सूखे मेवे",
+      "price": 900,
+      "img": "images/kaju.jpg",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 136,
+      "name": "खजूर",
+      "category": "सूखे मेवे",
+      "price": 350,
+      "img": "images/khajur.jpg",
+      "weight": "500g",
+      "type": "family"
+    },
+    {
+      "id": 137,
+      "name": "पिस्ता",
+      "category": "सूखे मेवे",
+      "price": 950,
+      "img": "images/pista.jpg",
+      "weight": "1kg",
+      "type": "family"
+    },
+    {
+      "id": 32,
+      "name": "किशमिश",
+      "category": "सूखे मेवे",
+      "price": 400,
+      "img": "images/manu.jpg",
+      "weight": "500g",
+      "type": "family"
+    }
+  ],
+  "users": [
+    {
+      "phone": "9921661629",
+      "name": "tejas",
+      "joinedAt": "2026-03-17T18:12:05.585Z"
+    },
+    {
+      "phone": "9865152482",
+      "name": "yash",
+      "joinedAt": "2026-03-17T18:57:47.740Z"
+    },
+    {
+      "phone": "9988776655",
+      "name": "Test User",
+      "joinedAt": "2026-03-17T19:57:19.060Z"
+    },
+    {
+      "phone": "9876543210",
+      "name": "Test User",
+      "joinedAt": "2026-03-17T20:18:38.030Z"
+    },
+    {
+      "phone": "8888888888",
+      "name": "Test User",
+      "joinedAt": "2026-03-17T20:41:04.611Z"
+    },
+    {
+      "phone": "1234567890",
+      "name": "Test User",
+      "joinedAt": "2026-03-17T20:47:03.557Z"
+    },
+    {
+      "phone": "9022420705",
+      "name": "venke",
+      "joinedAt": "2026-03-18T05:02:11.575Z"
+    }
+  ]
+}

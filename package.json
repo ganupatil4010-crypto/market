@@ -1,0 +1,14 @@
+{
+  "name": "gaon-kirana-store",
+  "version": "1.0.0",
+  "scripts": {
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && npm run start",
+    "dev:client": "cd client && npm run dev",
+    "seed": "cd server && node seed.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
