@@ -8,6 +8,7 @@ import Products from './pages/Products';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
+import api from './api';
 import './index.css';
 
 function App() {
@@ -15,30 +16,70 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [user, setUser] = useState(null); // { name, phone, role }
 
+  // Add a function to sync cart with backend
+  const syncCartWithBackend = async (newCart, currentUser) => {
+    if (currentUser && currentUser.phone) {
+      try {
+        await api.post('/api/cart', { phone: currentUser.phone, cart: newCart });
+      } catch (err) {
+        console.error('Error syncing cart with backend', err);
+      }
+    }
+  };
+
+  const saveCart = (newCart, currentUser) => {
+    setCart(newCart);
+    if (currentUser && currentUser.role !== 'owner') {
+      localStorage.setItem(`cart_${currentUser.phone}`, JSON.stringify(newCart));
+      syncCartWithBackend(newCart, currentUser);
+    } else {
+      localStorage.setItem('cart', JSON.stringify(newCart));
+      if (currentUser?.role === 'owner') syncCartWithBackend(newCart, currentUser);
+    }
+  };
+
+  const fetchAndMergeCart = async (currentUser) => {
+    try {
+      // 1. Get cart from backend
+      const res = await api.get(`/api/cart?phone=${currentUser.phone}`);
+      const backendCart = res.data;
+
+      // 2. Get cart from localStorage
+      const localCartKey = currentUser.role === 'owner' ? 'cart' : `cart_${currentUser.phone}`;
+      const localCart = JSON.parse(localStorage.getItem(localCartKey) || '[]');
+
+      // 3. Merge: Simple merge based on ID (backend takes precedence for quantity if conflict, or combine)
+      const mergedCart = [...backendCart];
+      localCart.forEach(localItem => {
+        const existing = mergedCart.find(item => item.id === localItem.id);
+        if (!existing) {
+          mergedCart.push(localItem);
+        } else {
+          // If exists in both, maybe take max quantity or local? 
+          // Let's take the higher one or sum them. Summing is safer for not losing items.
+          existing.qty = Math.max(existing.qty, localItem.qty);
+        }
+      });
+
+      setCart(mergedCart);
+      // Sync merged back to both
+      localStorage.setItem(localCartKey, JSON.stringify(mergedCart));
+      syncCartWithBackend(mergedCart, currentUser);
+
+    } catch (err) {
+      console.error('Error fetching/merging cart', err);
+    }
+  };
+
   // Check login status on mount
   useEffect(() => {
     const savedUser = localStorage.getItem('loggedInUser');
     if (savedUser) {
       const parsedUser = JSON.parse(savedUser);
       setUser(parsedUser);
-      // Load user specific cart
-      const savedCart = localStorage.getItem(
-        parsedUser.role === 'owner' ? 'cart' : `cart_${parsedUser.phone}`
-      );
-      if (savedCart) {
-        setCart(JSON.parse(savedCart));
-      }
+      fetchAndMergeCart(parsedUser);
     }
   }, []);
-
-  const saveCart = (newCart, currentUser) => {
-    setCart(newCart);
-    if (currentUser && currentUser.role !== 'owner') {
-      localStorage.setItem(`cart_${currentUser.phone}`, JSON.stringify(newCart));
-    } else {
-      localStorage.setItem('cart', JSON.stringify(newCart));
-    }
-  };
 
   const addToCart = (product) => {
     const existing = cart.find(item => item.id === product.id);
@@ -71,11 +112,7 @@ function App() {
   const handleLogin = (userData) => {
     setUser(userData);
     localStorage.setItem('loggedInUser', JSON.stringify(userData));
-    // Load their cart
-    const savedCart = localStorage.getItem(
-      userData.role === 'owner' ? 'cart' : `cart_${userData.phone}`
-    );
-    setCart(savedCart ? JSON.parse(savedCart) : []);
+    fetchAndMergeCart(userData);
   };
 
   const handleLogout = () => {
