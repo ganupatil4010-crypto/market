@@ -24,19 +24,19 @@ const Login = ({ onLogin }) => {
     }
 
     try {
-      // First try to login with just the phone to see if they exist
-      const res = await api.post('/api/users/login', { phone, name: 'temp' });
-      // If our backend logic says returning user
+      // Check if user exists by phone
+      const res = await api.post('/api/users/login', { phone });
+      
       if (res.data.msg === 'Returning user') {
         setReturningUserMsg(`🎉 ${res.data.user.name} जी, आपको पहचान लिया!`);
-        setName(res.data.user.name); // Store their name
-        setStep(2); // Returning user step
+        setName(res.data.user.name);
+        setStep(2); 
       }
     } catch (err) {
-      if (err.response && err.response.data && err.response.data.isNew) {
-        setStep(3); // Registration step
+      if (err.response?.data?.isNew) {
+        setStep(3); // New user registration
       } else {
-        setUserError('Something went wrong. Try again.');
+        setUserError('सर्वर एरर! कृपया दोबारा प्रयास करें।');
       }
     }
   };

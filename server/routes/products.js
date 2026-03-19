@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 // @route   POST /api/products
 // @desc    Add a product
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => req.app.get('ownerAuth')(req, res, next), (req, res) => {
   try {
     const products = db.getProducts();
     const newProduct = req.body;
@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
 
 // @route   PUT /api/products/:id
 // @desc    Update a product's price
-router.put('/:id', (req, res) => {
+router.put('/:id', (req, res, next) => req.app.get('ownerAuth')(req, res, next), (req, res) => {
   try {
     const products = db.getProducts();
     const productId = parseInt(req.params.id);
@@ -70,7 +70,7 @@ router.put('/:id', (req, res) => {
 
 // @route   DELETE /api/products/:id
 // @desc    Delete a product
-router.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res, next) => req.app.get('ownerAuth')(req, res, next), (req, res) => {
   try {
     const products = db.getProducts();
     const productId = parseInt(req.params.id);

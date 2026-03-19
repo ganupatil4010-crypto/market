@@ -18,6 +18,15 @@ const Products = ({ user, addToCart }) => {
   
   const [whatsappNumber, setWhatsappNumber] = useState('9876543210');
 
+  const fetchProducts = async () => {
+    try {
+      const res = await api.get('/api/products');
+      setProducts(res.data);
+    } catch (err) {
+      console.error('Error fetching products', err);
+    }
+  };
+
   useEffect(() => {
     fetchProducts();
     const savedNum = localStorage.getItem('whatsappNumber');
@@ -35,15 +44,6 @@ const Products = ({ user, addToCart }) => {
       socket.disconnect();
     };
   }, []);
-
-  const fetchProducts = async () => {
-    try {
-      const res = await api.get('/api/products');
-      setProducts(res.data);
-    } catch (err) {
-      console.error('Error fetching products', err);
-    }
-  };
 
   const updateWhatsAppNumber = () => {
     if (!/^\d{10}$/.test(whatsappNumber)) {
@@ -82,7 +82,8 @@ const Products = ({ user, addToCart }) => {
       setNewProductImage('');
       fetchProducts(); // Refresh list from DB
     } catch (err) {
-      alert('Error adding product');
+      const errorMsg = err.response?.data?.error || 'Error adding product';
+      alert(`❌ ${errorMsg}`);
     }
   };
 
@@ -103,7 +104,8 @@ const Products = ({ user, addToCart }) => {
       alert('✅ उत्पाद सफलतापूर्वक अपडेट हो गया!');
       fetchProducts();
     } catch (err) {
-      alert('Error updating product');
+      const errorMsg = err.response?.data?.error || 'Error updating product';
+      alert(`❌ ${errorMsg}`);
     }
   };
 
@@ -113,7 +115,8 @@ const Products = ({ user, addToCart }) => {
         await api.delete(`/api/products/${id}`);
         fetchProducts();
       } catch (err) {
-        alert('Error deleting product');
+        const errorMsg = err.response?.data?.error || 'Error deleting product';
+        alert(`❌ ${errorMsg}`);
       }
     }
   };

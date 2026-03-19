@@ -14,8 +14,8 @@ router.post('/login', (req, res) => {
     if (user) {
       return res.json({ msg: 'Returning user', user });
     } else {
-      // For simplified step-by-step logic in frontend
-      if (name === 'temp') {
+      // If name is not provided, it means we are just checking if the user exists
+      if (!name) {
         return res.status(404).json({ isNew: true });
       }
       

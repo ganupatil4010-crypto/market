@@ -13,12 +13,23 @@ const io = new Server(server, {
   }
 });
 
+// Simple Security Middleware
+const ownerAuth = (req, res, next) => {
+  const isOwner = req.headers['x-user-role'] === 'owner';
+  if (isOwner) {
+    next();
+  } else {
+    res.status(403).json({ error: 'Access Denied: Owner only' });
+  }
+};
+
 // Middleware
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: '*' })); // Keep open for now as per dev status, but ready for restriction
 app.use(express.json());
 
-// Pass io to routes
+// Pass ownerAuth and io to routes
 app.set('socketio', io);
+app.set('ownerAuth', ownerAuth);
 
 // Load Routes
 const productRoutes = require('./routes/products');
