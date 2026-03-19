@@ -9,8 +9,16 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-  }
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+  },
+  allowEIO3: true // Allow compatibility with older clients if needed
+});
+
+app.get('/api/test-socket', (req, res) => {
+  const io = req.app.get('socketio');
+  io.emit('settings_updated', { whatsappNumber: 'TEST_SUCCESS' });
+  res.send('Socket event emitted');
 });
 
 // Simple Security Middleware

@@ -23,7 +23,13 @@ router.post('/', (req, res, next) => req.app.get('ownerAuth')(req, res, next), (
     
     // Optional: emit socket event if you want real-time update of WhatsApp number
     const io = req.app.get('socketio');
-    if (io) io.emit('settings_updated', newSettings);
+    if (io) {
+      const clientCount = io.engine.clientsCount;
+      console.log(`Emitting settings_updated to ${clientCount} clients:`, newSettings);
+      io.emit('settings_updated', newSettings);
+    } else {
+      console.error('Socket.IO instance not found in req.app');
+    }
     
     res.json({ success: true, settings: newSettings });
   } catch (err) {
