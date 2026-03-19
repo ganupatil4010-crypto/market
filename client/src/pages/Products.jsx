@@ -241,7 +241,7 @@ const Products = ({ user, addToCart }) => {
                   type="text" 
                   value={whatsappNumber} 
                   onChange={(e) => setWhatsappNumber(e.target.value)}
-                  placeholder="जैसे: 9876543210" 
+                  placeholder="जैसे: 9822111304" 
                 />
                 <small style={{ color: '#666' }}>यही नंबर ग्राहकों के ऑर्डर भेजने के लिए उपयोग होगा</small>
               </div>
