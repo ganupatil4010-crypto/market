@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api';
+import { io } from 'socket.io-client';
+
+const SOCKET_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Products = ({ user, addToCart }) => {
   const [products, setProducts] = useState([]);
@@ -19,6 +22,18 @@ const Products = ({ user, addToCart }) => {
     fetchProducts();
     const savedNum = localStorage.getItem('whatsappNumber');
     if (savedNum) setWhatsappNumber(savedNum);
+
+    // Socket.IO for real-time updates
+    const socket = io(SOCKET_URL);
+    
+    socket.on('products_updated', () => {
+      console.log('Real-time update received: Refreshing products...');
+      fetchProducts();
+    });
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   const fetchProducts = async () => {

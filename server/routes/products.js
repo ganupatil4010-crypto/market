@@ -22,6 +22,11 @@ router.post('/', (req, res) => {
     const newProduct = req.body;
     products.push(newProduct);
     db.setProducts(products);
+    
+    // Emit real-time update
+    const io = req.app.get('socketio');
+    if (io) io.emit('products_updated');
+    
     res.status(201).json(newProduct);
   } catch (err) {
     console.error('POST /api/products error:', err);
@@ -51,6 +56,11 @@ router.put('/:id', (req, res) => {
     if (updates.type !== undefined) products[index].type = updates.type;
     
     db.setProducts(products);
+    
+    // Emit real-time update
+    const io = req.app.get('socketio');
+    if (io) io.emit('products_updated');
+    
     res.json(products[index]);
   } catch (err) {
     console.error('PUT /api/products/:id error:', err);
@@ -71,6 +81,11 @@ router.delete('/:id', (req, res) => {
     }
     
     db.setProducts(filteredProducts);
+    
+    // Emit real-time update
+    const io = req.app.get('socketio');
+    if (io) io.emit('products_updated');
+    
     res.json({ success: true, message: 'Product deleted' });
   } catch (err) {
     console.error('DELETE /api/products/:id error:', err);
