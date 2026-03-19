@@ -139,6 +139,39 @@ const Products = ({ user, addToCart }) => {
     }
   };
 
+  const handleImageUpload = async (id, file) => {
+    if (!file) return;
+
+    // Validate file type
+    const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+    if (!validTypes.includes(file.type)) {
+      alert('❌ केवल JPG, JPEG और PNG इमेज ही अपलोड करें!');
+      return;
+    }
+
+    // Validate file size (e.g., 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      alert('❌ इमेज का साइज 5MB से कम होना चाहिए!');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('productImage', file);
+
+    try {
+      await api.post(`/api/products/upload-image/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      alert('✅ इमेज सफलतापूर्वक अपलोड हो गई!');
+      fetchProducts(); // Refresh to show new image
+    } catch (err) {
+      const errorMsg = err.response?.data?.error || 'Upload failed';
+      alert(`❌ ${errorMsg}`);
+    }
+  };
+
   const handleDeleteProduct = async (id) => {
     if (window.confirm('क्या आप सच में इसे हटाना चाहते हैं?')) {
       try {
@@ -198,14 +231,32 @@ const Products = ({ user, addToCart }) => {
                 type="text" 
                 defaultValue={product.img} 
                 id={`img-edit-${product.id}`}
-                placeholder="इमेज पाथ (eg: images/kaju.jpg)"
+                placeholder="इमेज पाथ"
                 className="edit-input"
               />
+              
+              <div className="upload-section" style={{ marginTop: '5px' }}>
+                <input 
+                  type="file" 
+                  id={`file-upload-${product.id}`} 
+                  style={{ display: 'none' }} 
+                  accept="image/jpeg,image/png,image/jpg"
+                  onChange={(e) => handleImageUpload(product.id, e.target.files[0])}
+                />
+                <button 
+                  className="update-btn" 
+                  style={{ background: '#25a244', marginBottom: '8px' }}
+                  onClick={() => document.getElementById(`file-upload-${product.id}`).click()}
+                >
+                  📸 इमेज बदलें
+                </button>
+              </div>
+
               <button 
                 className="update-btn"
                 onClick={() => handleUpdateProduct(product.id)}
               >
-                अपडेट करें
+                कीमत अपडेट करें
               </button>
             </div>
           ) : (
