@@ -6,7 +6,6 @@ import CartSidebar from './components/CartSidebar';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import About from './pages/About';
-import Contact from './pages/Contact';
 import Login from './pages/Login';
 import api from './api';
 import './index.css';
@@ -142,7 +141,6 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products user={user} addToCart={addToCart} />} />
               <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
             </Routes>
           )}
         </main>

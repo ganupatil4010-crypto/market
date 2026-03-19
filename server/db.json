@@ -13,7 +13,7 @@
       "id": 2,
       "name": "मसूर दाल",
       "category": "दाल",
-      "price": 95,
+      "price": 1000,
       "img": "images/masurdaal.png",
       "weight": "1kg",
       "type": "family"
@@ -595,5 +595,19 @@
       "name": "venke",
       "joinedAt": "2026-03-18T05:02:11.575Z"
     }
-  ]
+  ],
+  "carts": {
+    "9921661629": [
+      {
+        "id": 136,
+        "name": "खजूर",
+        "category": "सूखे मेवे",
+        "price": 350,
+        "img": "images/khajur.jpg",
+        "weight": "500g",
+        "type": "family",
+        "qty": 1
+      }
+    ]
+  }
 }
