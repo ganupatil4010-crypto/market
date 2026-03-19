@@ -24,8 +24,16 @@ const ownerAuth = (req, res, next) => {
 };
 
 // Middleware
-app.use(cors({ origin: '*' })); // Keep open for now as per dev status, but ready for restriction
+app.use(cors({ origin: '*' }));
 app.use(express.json());
+
+// Prevent API caching
+app.use((req, res, next) => {
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '0');
+  next();
+});
 
 // Pass ownerAuth and io to routes
 app.set('socketio', io);
