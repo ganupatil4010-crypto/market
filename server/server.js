@@ -35,11 +35,13 @@ app.set('ownerAuth', ownerAuth);
 const productRoutes = require('./routes/products');
 const userRoutes = require('./routes/users');
 const cartRoutes = require('./routes/cart');
+const settingsRoutes = require('./routes/settings');
 
 // Use Routes
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/settings', settingsRoutes);
 
 io.on('connection', (socket) => {
   console.log('A user connected:', socket.id);

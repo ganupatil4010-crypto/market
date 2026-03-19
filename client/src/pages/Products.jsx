@@ -18,6 +18,15 @@ const Products = ({ user, addToCart }) => {
   
   const [whatsappNumber, setWhatsappNumber] = useState('9876543210');
 
+  const fetchSettings = async () => {
+    try {
+      const res = await api.get('/api/settings');
+      if (res.data.whatsappNumber) setWhatsappNumber(res.data.whatsappNumber);
+    } catch (err) {
+      console.error('Error fetching settings', err);
+    }
+  };
+
   const fetchProducts = async () => {
     try {
       const res = await api.get('/api/products');
@@ -29,8 +38,7 @@ const Products = ({ user, addToCart }) => {
 
   useEffect(() => {
     fetchProducts();
-    const savedNum = localStorage.getItem('whatsappNumber');
-    if (savedNum) setWhatsappNumber(savedNum);
+    fetchSettings();
 
     // Socket.IO for real-time updates
     const socket = io(SOCKET_URL);
@@ -40,18 +48,29 @@ const Products = ({ user, addToCart }) => {
       fetchProducts();
     });
 
+    socket.on('settings_updated', (newSettings) => {
+      console.log('Real-time settings update received:', newSettings);
+      if (newSettings.whatsappNumber) setWhatsappNumber(newSettings.whatsappNumber);
+    });
+
     return () => {
       socket.disconnect();
     };
   }, []);
 
-  const updateWhatsAppNumber = () => {
+  const updateWhatsAppNumber = async () => {
     if (!/^\d{10}$/.test(whatsappNumber)) {
       alert('कृपया 10 अंकों का सही मोबाइल नंबर डालें!');
       return;
     }
-    localStorage.setItem('whatsappNumber', whatsappNumber);
-    alert('✅ व्हाट्सएप नंबर सफलतापूर्वक अपडेट हो गया! अब सभी ऑर्डर इसी नंबर पर जाएंगे।');
+    
+    try {
+      await api.post('/api/settings', { whatsappNumber });
+      alert('✅ व्हाट्सएप नंबर सफलतापूर्वक अपडेट हो गया! अब सभी ऑर्डर इसी नंबर पर जाएंगे।');
+    } catch (err) {
+      const errorMsg = err.response?.data?.error || 'Error updating settings';
+      alert(`❌ ${errorMsg}`);
+    }
   };
 
   const handleAddProduct = async () => {

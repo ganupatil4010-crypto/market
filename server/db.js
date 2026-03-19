@@ -5,12 +5,20 @@ const DB_PATH = path.join(__dirname, 'db.json');
 
 const initDB = () => {
   if (!fs.existsSync(DB_PATH)) {
-    fs.writeFileSync(DB_PATH, JSON.stringify({ products: [], users: [], carts: {} }, null, 2));
+    fs.writeFileSync(DB_PATH, JSON.stringify({ products: [], users: [], carts: {}, settings: { whatsappNumber: '9876543210' } }, null, 2));
   } else {
-    // Ensure 'carts' key exists in existing DB
+    // Ensure 'carts' and 'settings' keys exist in existing DB
     const data = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+    let modified = false;
     if (!data.carts) {
       data.carts = {};
+      modified = true;
+    }
+    if (!data.settings) {
+      data.settings = { whatsappNumber: '9876543210' };
+      modified = true;
+    }
+    if (modified) {
       fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
     }
   }
@@ -43,6 +51,12 @@ module.exports = {
   setCarts: (carts) => {
     const data = getData();
     data.carts = carts;
+    saveData(data);
+  },
+  getSettings: () => getData().settings,
+  setSettings: (settings) => {
+    const data = getData();
+    data.settings = settings;
     saveData(data);
   }
 };
