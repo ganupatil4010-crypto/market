@@ -17,7 +17,7 @@ const Products = ({ user, addToCart }) => {
   const [newProductType, setNewProductType] = useState('family');
   const [newProductImage, setNewProductImage] = useState('');
   
-  const [whatsappNumber, setWhatsappNumber] = useState('9876543210');
+  const [whatsappNumber, setWhatsappNumber] = useState('9822111304');
 
   const fetchSettings = async () => {
     try {

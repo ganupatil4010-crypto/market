@@ -2,7 +2,7 @@ import React from 'react';
 
 const CartSidebar = ({ isOpen, onClose, cart, updateQty, removeItem }) => {
   const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-  const whatsappNumber = localStorage.getItem('whatsappNumber') || '9876543210';
+  const whatsappNumber = localStorage.getItem('whatsappNumber') || '9822111304';
 
   const handleWhatsappOrder = () => {
     if (cart.length === 0) {

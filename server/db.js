@@ -5,7 +5,7 @@ const DB_PATH = path.join(__dirname, 'db.json');
 
 const initDB = () => {
   if (!fs.existsSync(DB_PATH)) {
-    fs.writeFileSync(DB_PATH, JSON.stringify({ products: [], users: [], carts: {}, settings: { whatsappNumber: '9876543210' } }, null, 2));
+    fs.writeFileSync(DB_PATH, JSON.stringify({ products: [], users: [], carts: {}, settings: { whatsappNumber: '9822111304' } }, null, 2));
   } else {
     // Ensure 'carts' and 'settings' keys exist in existing DB
     const data = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
@@ -15,7 +15,7 @@ const initDB = () => {
       modified = true;
     }
     if (!data.settings) {
-      data.settings = { whatsappNumber: '9876543210' };
+      data.settings = { whatsappNumber: '9822111304' };
       modified = true;
     }
     if (modified) {
