@@ -15,7 +15,6 @@ const Header = ({ user, cartCount, toggleCart, onLogout }) => {
           <li><Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>होम</Link></li>
           <li><Link to="/products" className={`nav-link ${location.pathname === '/products' ? 'active' : ''}`}>उत्पाद</Link></li>
           <li><Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}>हमारे बारे</Link></li>
-          <li><Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}>संपर्क</Link></li>
         </ul>
       </nav>
       <div className="user-controls">
