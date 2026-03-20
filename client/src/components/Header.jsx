@@ -7,7 +7,7 @@ const Header = ({ user, cartCount, toggleCart, onLogout }) => {
   return (
     <header id="mainHeader">
       <div className="logo">
-        <h1>गाँव किराना</h1>
+        <h1>रासाई किराना</h1>
         <span>हर चीज़ घर द्वार</span>
       </div>
       <nav>
