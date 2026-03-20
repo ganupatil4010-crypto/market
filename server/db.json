@@ -597,6 +597,18 @@
     }
   ],
   "carts": {
+    "1234567890": [
+      {
+        "id": 1,
+        "name": "तूर दाल",
+        "category": "दाल",
+        "price": 120,
+        "img": "images/productImage-1773921594311-711330938.png",
+        "weight": "1kg",
+        "type": "family",
+        "qty": 1
+      }
+    ],
     "9921661629": [
       {
         "id": 136,
